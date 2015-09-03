@@ -1,13 +1,8 @@
 #!/bin/bash
 
 PATH=`pwd`
-HOME=`readlink -f ~`
 
-echo "TORRENT:"
-ls -l $PATH/torrent
-while true
-do 
-        echo "DATA:"
-        ls -l $PATH/data
-        sleep 5
-done
+aria2 http://releases.ubuntu.com/15.04/ubuntu-15.04-desktop-amd64.iso.torrent -d $PATH/data 
+
+echo "DATA:"
+ls -l $PATH/data
