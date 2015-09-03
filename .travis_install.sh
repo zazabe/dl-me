@@ -1,5 +1,7 @@
+#!/bin/bash
+
 sudo apt-get install aria2 coreutils -y
 
-PATH=`pwd`
-mkdir $PATH/data
-aria2 --help
+PATH=`/bin/pwd`
+/bin/mkdir $PATH/data
+/usr/bin/aria2c --help

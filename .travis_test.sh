@@ -1,8 +1,8 @@
 #!/bin/bash
 
-PATH=`pwd`
+PATH=`/bin/pwd`
 
-aria2 http://releases.ubuntu.com/15.04/ubuntu-15.04-desktop-amd64.iso.torrent -d $PATH/data 
+/usr/bin/aria2c http://releases.ubuntu.com/15.04/ubuntu-15.04-desktop-amd64.iso.torrent -d $PATH/data 
 
 echo "DATA:"
-ls -l $PATH/data
+/bin/ls -l $PATH/data
