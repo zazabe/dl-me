@@ -2,11 +2,9 @@ sudo apt-get install rtorrent
 
 PATH=`pwd`
 HOME=`readlink -f ~`
-echo "executed in $PATH (home: $HOME)"
+echo "configure rtorrent in ${PATH} (home=$HOME)"
 
-mkdir $PATH/{torrent,data,session}
-cat $HOME/.rtorrentrc <<EOF
-
+cat << EOF > $HOME/.rtorrent.rc
 # This is an example resource file for rTorrent. Copy to
 # ~/.rtorrent.rc and enable/modify the options as needed. Remember to
 # uncomment the options you wish to enable.
@@ -32,16 +30,16 @@ download_rate = 0
 upload_rate = 300
 
 # Default directory to save the downloaded torrents.
-directory = $PATH/data
+directory = ${PATH}/data
 
 # Default session directory. Make sure you don't run multiple instance
 # of rtorrent using the same session directory. Perhaps using a
 # relative path?
-session = $PATH/session
+session = ${PATH}/session
 
 # Watch a directory for new torrents, and stop those that have been
 # deleted.
-schedule = watch_directory,5,5,load_start=$PATH/torrent/*.torrent
+schedule = watch_directory,5,5,load_start=${PATH}/torrent/*.torrent
 schedule = tied_directory,6,5,start_tied=
 schedule = untied_directory,7,5,stop_untied=
 
@@ -125,4 +123,6 @@ schedule = sort_active,14,5,view.sort=active
 #peer_exchange = yes
 EOF
 
+print 'start rtorrent...'
 rtorrent &
+echo 'done'

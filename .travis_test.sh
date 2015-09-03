@@ -9,4 +9,5 @@ while true
 do 
         echo "DATA:"
         ls -l $PATH/data
+        sleep 5
 done
